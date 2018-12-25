@@ -20,7 +20,7 @@ use App\Http\Resources\Categories;
 
 Route::get('/categories', function (Request $request) {
     $parentCategoryId = $request->get('parentCategoryId');
-    
+
     if ($parentCategoryId) {
         $query = Category::where('parent_id', (int) $parentCategoryId);
     } else {
@@ -43,9 +43,10 @@ Route::get('/advertisements', function (Request $request) {
     return new Advertisements($advertisements);
 });
 
-
+/**
 Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
     return $request->user();
 });
+ **/
