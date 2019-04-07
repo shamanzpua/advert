@@ -21,13 +21,31 @@ use App\Http\Resources\Categories;
 Route::get('/categories', function (Request $request) {
     $parentCategoryId = $request->get('parentCategoryId');
 
-    if ($parentCategoryId) {
-        $query = Category::where('parent_id', (int) $parentCategoryId);
+    $parent =null;
+	if ($parentCategoryId) {
+		$parent = Category::where('parent_id', $parentCategoryId)->first();
+		
+		if (!$parent) {
+			$parent = Category::where('id', $parentCategoryId)->first();		
+		}  
+	}
+
+
+    if ($parent) {	
+		return [
+		'data' => [
+			'all' => Category::getTree($parent),
+			
+			]
+		];
     } else {
         $query = Category::whereNull('parent_id');
     }
-
-    return new Categories($query->get());
+	$data = $query->get();
+    return [
+		'data' => new Categories($data),
+		'level' => $data->first()->level ?? null	
+	];
 });
 
 
