@@ -1,6 +1,7 @@
 <?php
 namespace App\Models\Advertisements;
 
+use App\Services\TreePathGenerator\CategoryPathGenerator;
 use Illuminate\Database\Eloquent\Model;
 use App\Http\Resources\Categories;
 
@@ -24,4 +25,16 @@ class Category extends Model
 		return array_reverse(self::$parents);
 		 
 	}
+
+
+	public function save(array $options = [])
+    {
+        /**
+         * @var CategoryPathGenerator $categoryPathGenerator
+         */
+        $categoryPathGenerator = app()->make(CategoryPathGenerator::class);
+        $this->category_path = $categoryPathGenerator->generate($this);
+
+        return parent::save($options);
+    }
 }
