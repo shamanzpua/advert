@@ -22,6 +22,6 @@ class AdvertisementsController extends Controller
             $advertisements = Advertisement::all();
         }
 
-        return new Advertisements($advertisements);
+            return new Advertisements($advertisements);
     }
 }
