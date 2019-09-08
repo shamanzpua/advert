@@ -14,3 +14,4 @@
 
 Route::get('/categories', 'CategoriesController@index');
 Route::get('/advertisements', 'AdvertisementsController@index');
+Route::get('/locations', 'LocationsController@index');
