@@ -21,6 +21,7 @@ class Parser
                 'name' => $firstLevelLocation['name'],
                 'code' => $firstLevelLocation['code'],
                 'type_id' => Location::REGION_TYPE,
+                'path' => '/'
             ]);
             if (isset($firstLevelLocation['level2'])) {
                 foreach ($firstLevelLocation['level2'] as $secondLevelLocation) {
@@ -29,6 +30,7 @@ class Parser
                         'code' => $secondLevelLocation['code'],
                         'type_id' => Location::CITY_TYPE,
                         'parent_id' => $locationModelLevel1->id,
+                        'path' => $locationModelLevel1->path . $locationModelLevel1->id . "/",
                     ]);
                     if (isset($secondLevelLocation['level3'])) {
                         foreach ($secondLevelLocation['level3'] as $thirdLevelLocation) {
@@ -40,6 +42,8 @@ class Parser
                                 'code' => $thirdLevelLocation['code'],
                                 'type_id' => Location::AREA_TYPE,
                                 'parent_id' => $locationModelLevel2->id,
+                                'path' => $locationModelLevel2->path . $locationModelLevel2->id . "/",
+
                             ]);
                             if (isset($thirdLevelLocation['level4'])) {
                                 foreach ($thirdLevelLocation['level4'] as $fourthLevelLocation) {
@@ -51,6 +55,7 @@ class Parser
                                         'code' => $fourthLevelLocation['code'],
                                         'type_id' => Location::VILLAGE_TYPE,
                                         'parent_id' => $locationModelLevel3->id,
+                                        'path' => $locationModelLevel3->path . $locationModelLevel3->id . "/",
                                     ]);
                                 }
                             }
@@ -117,6 +122,7 @@ class Parser
         $location = new Location;
         $location->name = $data['name'];
         $location->code = $data['code'];
+        $location->path = $data['path'] ?? '';
         $location->type_id = $data['type_id'];
         $parentId = $data['parent_id'] ?? null;
 

@@ -14,6 +14,7 @@ class AddLocation extends Migration
             $table->integer('parent_id')->unsigned()->nullable();
             $table->smallInteger('type_id');
             $table->string('name');
+            $table->string('path');
             $table->string('code');
             $table->timestamps();
             $table->foreign('parent_id')
