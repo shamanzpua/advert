@@ -3,6 +3,7 @@ services:
   api:
     build:
      context: ./docker/api
+    container_name: api
     env_file:
       - ./project/.env
     volumes:
@@ -11,6 +12,7 @@ services:
   web:
     image: nginx:stable
     command: [nginx-debug, '-g', 'daemon off;']
+    container_name: web
     ports:
       - 0.0.0.0:80:80
     volumes:
@@ -19,6 +21,7 @@ services:
 
   db:
     image: mysql:5.7
+    container_name: db
     ports:
       - 127.0.0.1:33066:3306 #for sequel pro
     environment:
@@ -30,6 +33,7 @@ services:
           - /var/www/api/db:/var/lib/mysql
   phpmyadmin:
       image: phpmyadmin/phpmyadmin:4.7
+      container_name: phpmyadmin
       links:
        - db
       depends_on:
