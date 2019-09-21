@@ -26,6 +26,8 @@ services:
       MYSQL_USER: user
       MYSQL_PASSWORD: pass
       MYSQL_DATABASE: board
+    volumes:
+          - /var/www/api/db:/var/lib/mysql
   phpmyadmin:
       image: phpmyadmin/phpmyadmin:4.7
       links:
