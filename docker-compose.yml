@@ -1,0 +1,39 @@
+version: "3"
+services:
+  api:
+    build:
+     context: ./docker/api
+    env_file:
+      - ./project/.env
+    volumes:
+      - ./composer_home/:/var/www/.composer
+      - ./project:/var/www/board:cached
+  web:
+    image: nginx:stable
+    command: [nginx-debug, '-g', 'daemon off;']
+    ports:
+      - 0.0.0.0:80:80
+    volumes:
+      - ./project:/var/www/board
+      - ./docker/web/api.conf:/etc/nginx/conf.d/api.conf:ro
+
+  db:
+    image: mysql:5.7
+    ports:
+      - 127.0.0.1:33066:3306 #for sequel pro
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
+      MYSQL_DATABASE: board
+  phpmyadmin:
+      image: phpmyadmin/phpmyadmin:4.7
+      links:
+       - db
+      depends_on:
+       - db
+      ports:
+       - 127.0.0.1:1500:80
+      environment:
+       - PMA_HOST=db
+
