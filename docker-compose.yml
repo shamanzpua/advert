@@ -14,7 +14,7 @@ services:
     command: [nginx-debug, '-g', 'daemon off;']
     container_name: web
     ports:
-      - 0.0.0.0:80:80
+      - 127.0.0.1:8000:80
     volumes:
       - ./project:/var/www/board
       - ./docker/web/api.conf:/etc/nginx/conf.d/api.conf:ro
