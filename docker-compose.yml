@@ -10,7 +10,7 @@ services:
       - 127.0.0.1:9000:9000
     volumes:
       - ./composer_home/:/var/www/.composer
-      - ./project:/var/www/board:cached
+      - ./project:/var/www/board
   web:
     image: nginx:stable
     command: [nginx-debug, '-g', 'daemon off;']
