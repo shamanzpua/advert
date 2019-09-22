@@ -31,4 +31,3 @@ ENV COMPOSER_HOME /var/www/.composer
 
 WORKDIR /var/www/board
 
-RUN cd /var/www/board && composer install
