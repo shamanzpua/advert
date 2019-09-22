@@ -11,13 +11,13 @@ services:
     volumes:
       - ./composer_home/:/var/www/.composer
       - ./project:/var/www/board
-   dependencies:
-     build:
-      context: ./docker/api
-     container_name: dependencies
-     env_file:
+  dependencies:
+    build:
+     context: ./docker/api
+    container_name: dependencies
+    env_file:
       - ./project/.env
-     volumes:
+    volumes:
       - ./composer_home/:/var/www/.composer
       - ./project:/var/www/board
   web:
