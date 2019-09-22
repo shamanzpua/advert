@@ -39,7 +39,7 @@ services:
       depends_on:
        - db
       ports:
-       - 127.0.0.1:1500:80
+       - 0.0.0.0:1500:80
       environment:
        - PMA_HOST=db
 
