@@ -12,14 +12,14 @@ services:
       - ./composer_home/:/var/www/.composer
       - ./project:/var/www/board
    dependencies:
-       build:
-        context: ./docker/api
-       container_name: dependencies
-       env_file:
-         - ./project/.env
-       volumes:
-         - ./composer_home/:/var/www/.composer
-         - ./project:/var/www/board
+     build:
+      context: ./docker/api
+     container_name: dependencies
+     env_file:
+      - ./project/.env
+     volumes:
+      - ./composer_home/:/var/www/.composer
+      - ./project:/var/www/board
   web:
     image: nginx:stable
     command: [nginx-debug, '-g', 'daemon off;']
