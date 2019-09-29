@@ -19,6 +19,26 @@ class CategoriesController extends Controller
     {
         $parentCategoryId = $request->get('parentCategoryId');
 
+        if ($parentCategoryId) {
+            $categories = Category::where('parent_id', $parentCategoryId)->get();
+        } else {
+            $categories = Category::whereNull('parent_id')->get();
+        }
+
+        return [
+            'data' => $categories,
+        ];
+    }
+
+    /**
+     * @deprecated
+     * @param Request $request
+     * @return array
+     */
+    public function indexOld(Request $request)
+    {
+        $parentCategoryId = $request->get('parentCategoryId');
+
         $parent = null;
         if ($parentCategoryId) {
             $parent = Category::where('parent_id', $parentCategoryId)->first();
