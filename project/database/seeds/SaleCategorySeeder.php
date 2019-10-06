@@ -44,7 +44,5 @@ class SaleCategorySeeder extends Seeder
         foreach (Category::get() as $model) {
             $model->save();
         }
-
-        dd($saleCategories);
     }
 }

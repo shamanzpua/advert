@@ -15,6 +15,7 @@ class ModifyCategoriesSt1 extends Migration
      */
     public function up()
     {
+        return;
         Schema::table('categories', function (Blueprint $table) {
             $table->smallInteger('level')->unsigned()->nullable();
             $table->string('category_path')->nullable()->change();
@@ -34,10 +35,6 @@ class ModifyCategoriesSt1 extends Migration
             '--class' => SaleCategorySeeder::class,
             '--force' => true,
         ]);
-
-        dd(1488);
-        die;
-
     }
 
     /**
