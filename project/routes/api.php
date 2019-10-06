@@ -10,8 +10,11 @@
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::group(['namespace' => 'Api'], function () {
+    Route::get('/categories', 'CategoriesController@index');
+    Route::get('/advertisements', 'AdvertisementsController@index');
+    Route::get('/locations', 'LocationsController@index');
+    Route::get('/images/{pattern}/{id}', 'ImagesController@index');
+});
 
 
-Route::get('/categories', 'CategoriesController@index');
-Route::get('/advertisements', 'AdvertisementsController@index');
-Route::get('/locations', 'LocationsController@index');

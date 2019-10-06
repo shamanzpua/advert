@@ -21,10 +21,10 @@ class CreateCategoriesTable extends Migration
             $table->foreign('parent_id')->references('id')->on('categories')->delete('cascade')->update('cascade');
         });
 
-        Artisan::call('db:seed', [
-            '--class' => CategorySeeder::class,
-            '--force' => true,
-        ]);
+//        Artisan::call('db:seed', [
+//            '--class' => CategorySeeder::class,
+//            '--force' => true,
+//        ]);
     }
 
     /**

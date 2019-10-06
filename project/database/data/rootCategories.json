@@ -1,0 +1,10 @@
+{
+    "items": [
+        {"id":1,"image":"1.png","title":"Продам","level":0},
+        {"id":2,"image":"20.png","title":"Куплю","level":0},
+        {"id":3,"image":"21.png","title":"Обмен","level":0},
+        {"id":4,"image":"5.png","title":"Отдам","level":0},
+        {"id":5,"image":"8.png","title":"Услуги","level":0},
+        {"id":6,"image":"7.png","title":"Работа","level":0}
+    ]
+}
