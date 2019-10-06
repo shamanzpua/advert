@@ -20,7 +20,7 @@ services:
       - ./project/.env
     volumes:
       - ./composer_home/:/var/www/.composer
-      - - ./project:/var/www/board
+      - ./project:/var/www/board
       - ./files:/var/www/board/files
   web:
     image: nginx:stable
