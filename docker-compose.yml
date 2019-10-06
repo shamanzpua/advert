@@ -11,7 +11,7 @@ services:
     volumes:
       - ./composer_home/:/var/www/.composer
       - ./project:/var/www/board
-      - /var/www/api/db:/var/www/board
+      - /var/www/api/files:/var/www/board/files
   dependencies:
     build:
      context: ./docker/api
