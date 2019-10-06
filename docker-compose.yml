@@ -11,7 +11,7 @@ services:
     volumes:
       - ./composer_home/:/var/www/.composer
       - ./project:/var/www/board
-      - /var/www/api/files:/var/www/board/files
+      - ./files:/var/www/board/files
   dependencies:
     build:
      context: ./docker/api
@@ -20,7 +20,8 @@ services:
       - ./project/.env
     volumes:
       - ./composer_home/:/var/www/.composer
-      - ./files:/var/www/board/storage/files
+      - - ./project:/var/www/board
+      - ./files:/var/www/board/files
   web:
     image: nginx:stable
     command: [nginx-debug, '-g', 'daemon off;']
