@@ -16,7 +16,7 @@ class ModifyCategoriesSt1 extends Migration
     public function up()
     {
         Schema::table('categories', function (Blueprint $table) {
-//            $table->smallInteger('level')->unsigned()->nullable();
+            $table->smallInteger('level')->unsigned()->nullable();
             $table->string('category_path')->nullable()->change();
             $table->string('image')->nullable()->change();
         });

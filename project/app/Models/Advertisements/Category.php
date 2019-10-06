@@ -52,5 +52,3 @@ class Category extends Model
         return url("/api/images/category/{$this->id}");
     }
 }
-
-rsync -zavP /data/projects/cockatooplace/advert/project/storage/files/ -e "ssh -p 20" root@5.187.2.193:/var/www/api/current/project/storage/files
