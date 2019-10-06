@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        \URL::forceRootUrl(env('APP_URL'));
     }
 
     /**
