@@ -10,5 +10,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Currency extends Model
 {
-
+    const UAH = 1;
+    const USD = 2;
 }

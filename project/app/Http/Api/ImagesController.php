@@ -18,7 +18,7 @@ class ImagesController extends Controller
 {
     private $types = [
         'category' => Category::class,
-        'advertisement' => Advertisement::class,
+        'advertisements' => Advertisement::class,
     ];
 
     public function index($type, $id)

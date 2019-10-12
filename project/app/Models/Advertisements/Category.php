@@ -2,7 +2,6 @@
 namespace App\Models\Advertisements;
 
 use App\Services\TreePathGenerator\CategoryPathGenerator;
-use App\ValueObjects\User\WriterRating;
 use Illuminate\Database\Eloquent\Model;
 use App\Http\Resources\Categories;
 use Illuminate\Routing\UrlGenerator;
