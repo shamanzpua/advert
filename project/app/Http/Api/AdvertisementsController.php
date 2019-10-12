@@ -17,7 +17,9 @@ class AdvertisementsController extends Controller
         $categoryId = $request->get('categoryId');
 
         if ($categoryId) {
-            $advertisements = Advertisement::where('category_path', 'like', "%{".((int) $categoryId) . "}%")->get();
+            $advertisements = Advertisement::whereHas('category', function ($query) use ($categoryId) {
+                $query->where('categories.category_path', 'like', "%{".((int) $categoryId) . "}%");
+            })->get();
         } else {
             $advertisements = Advertisement::all();
         }
