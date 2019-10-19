@@ -19,7 +19,7 @@ class AdvertisementsController extends Controller
         if ($categoryId) {
             $advertisements = Advertisement::whereHas('category', function ($query) use ($categoryId) {
                 $query->where('categories.category_path', 'like', "%{".((int) $categoryId) . "}%");
-            })->get();
+            })->orderBy('id', 'desc')->limit(50)->get();
         } else {
             $advertisements = Advertisement::orderBy('id', 'desc')->limit(50)->get();
         }
