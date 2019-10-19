@@ -10,7 +10,7 @@
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::group(['namespace' => 'Api'], function () {
+Route::group(['namespace' => 'Api', 'middleware' => 'throttle:2000'], function () {
     Route::get('/categories', 'CategoriesController@index');
     Route::get('/advertisements', 'AdvertisementsController@index');
     Route::get('/locations', 'LocationsController@index');

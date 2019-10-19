@@ -21,7 +21,7 @@ class AdvertisementsController extends Controller
                 $query->where('categories.category_path', 'like', "%{".((int) $categoryId) . "}%");
             })->get();
         } else {
-            $advertisements = Advertisement::all();
+            $advertisements = Advertisement::orderBy('id', 'desc')->limit(50)->get();
         }
 
             return new Advertisements($advertisements);
